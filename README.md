@@ -16,6 +16,19 @@ cargo install --path .
 
 Or build with `cargo build --release` and use `target/release/rsqlite`.
 
+### Debian/Ubuntu package
+
+Build a `.deb` with [cargo-deb](https://github.com/kornelski/cargo-deb) and install it with apt:
+
+```sh
+cargo install cargo-deb        # one-time
+cargo deb                      # -> target/debian/rsqlite_<version>-1_amd64.deb
+sudo apt install ./target/debian/rsqlite_*.deb
+```
+
+SQLite is statically linked, so the package has no `libsqlite3` dependency. To
+upgrade, bump `version` in `Cargo.toml` and repeat. Remove it with `sudo apt remove rsqlite`.
+
 ## Usage
 
 List the tables in a database:
@@ -95,3 +108,7 @@ python3 scripts/gen_fixtures.py   # regenerate the edge-case fixtures
 ```
 
 The test databases are described in [`tests/fixtures/README.md`](tests/fixtures/README.md).
+
+## License
+
+MIT, see [LICENSE](LICENSE).

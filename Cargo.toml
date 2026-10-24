@@ -2,6 +2,10 @@
 name = "rsqlite"
 version = "0.1.0"
 edition = "2024"
+description = "Extract data from SQLite database files as CSV"
+license = "MIT"
+authors = ["Steve Homer <steve.homer@gmail.com>"]
+readme = "README.md"
 
 [dependencies]
 anyhow = "1.0.104"
@@ -13,3 +17,16 @@ rusqlite = { version = "0.41.0", features = ["bundled"] }
 assert_cmd = "2.2.2"
 predicates = "3.1.4"
 tempfile = "3.27.0"
+
+[package.metadata.deb]
+maintainer = "Steve Homer <steve.homer@gmail.com>"
+copyright = "2026, Steve Homer <steve.homer@gmail.com>"
+section = "database"
+priority = "optional"
+extended-description = """\
+Command-line tool that exports tables, views or SQL query results from SQLite \
+database files as CSV. SQLite is statically linked; databases are opened read-only."""
+assets = [
+    ["target/release/rsqlite", "usr/bin/", "755"],
+    ["README.md", "usr/share/doc/rsqlite/", "644"],
+]
