@@ -1,0 +1,6 @@
+/target
+# Large sample databases downloaded by scripts/fetch_corpus.sh
+/tests/fixtures/external/
+# SQLite sidecars created when opening fixtures (wal_pending.db-wal is committed)
+*.db-shm
+*.db-journal
